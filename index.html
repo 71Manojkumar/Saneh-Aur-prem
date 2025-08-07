@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>रक्षाबंधन शुभकामना</title>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background:yellowgreen;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .typing-quote {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #6b2d2d;
+      margin: 20px;
+    }
+   .photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 20px auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+    .message {
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      margin: 20px;
+    }
+    input, button {
+      width: 80%; max-width: 300px;
+      padding: 12px;
+      font-size: 1rem;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+      box-sizing: border-box;
+    }
+    button {
+      background: #ff5722;
+      color: white;
+      cursor: pointer;
+    }
+    .nara-section {
+      margin-top: 40px;
+      padding: 15px;
+      border-top: 2px dashed #b4442b;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #8b1e1e;
+      background-color: #fff8f0;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="typing-quote" id="typingText">"मेरी तरफ से आपको और आपके पूरे परिवार को रक्षाबंधन की हार्दिक शुभकामनाएं।
+यह पावन पर्व आपके जीवन में सुख, शांति और समृद्धि लाए।"</div>
+
+  <div class="photo">
+    <img src="akki.jpg" alt="विधायक जी">
+  </div>
+
+  <input type="text" id="userName" placeholder="आपका नाम डालें" />
+  <button id="sendBtn">🎉 विधायक जी को शुभकामना भेजें</button>
+
+  <div id="greeting" class="message"></div>
+
+  <div class="nara-section" id="nara">
+    ✊ <strong>विकास की बात, विधायक जी के साथ!</strong><br>
+    🙏 <em>जनता की सेवा, हमारा संकल्प — विधायक जी को जिताएं, विकास की रफ्तार बढ़ाएं!</em>
+  </div>
+
+  <script>
+    const jsConfetti = new JSConfetti();
+
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const name = document.getElementById('userName').value.trim() || 'आप';
+      document.getElementById('greeting').textContent =
+        `${name} जी की तरफ से विधायक जी और विधायक जी के पूरे परिवार को रक्षाबंधन की हार्दिक शुभकामनाएँ।`;
+
+      document.getElementById('userName').style.display = 'none';
+      document.getElementById('sendBtn').style.display = 'none';
+
+      const g = document.getElementById('greeting');
+      g.style.animation = 'none';
+      void g.offsetWidth;
+      g.style.animation = 'fadeIn 2s forwards';
+
+      // Confetti loop: 5 बार, हर 1 सेकंड पर
+      let count = 0;
+      const confettiInterval = setInterval(() => {
+        jsConfetti.addConfetti({
+          emojis: ['🎉', '🎊', '💐', '🌸', '✨', '💖'],
+          emojiSize: 40,
+          confettiRadius: 6,
+          confettiNumber: 120,
+          confettiColors: ['#FFD700', '#FF69B4', '#32CD32', '#1E90FF', '#FF4500']
+        });
+        count++;
+        if (count >= 5) {
+          clearInterval(confettiInterval);
+        }
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
